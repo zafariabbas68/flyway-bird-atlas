@@ -1,0 +1,80 @@
+{
+ "wood-thrush": {
+  "source": "GBIF.org occurrence search (includes the eBird Observation Dataset, CC BY 4.0)",
+  "taxonKey": 2490872,
+  "records_in_region": 2053201,
+  "all_bird_records_in_region": 1059355917,
+  "cell_degrees": 5.0,
+  "years": "2010,2024",
+  "min_effort_per_cell_month": 100.0,
+  "queried": "2026-10-28",
+  "method": "share of all bird records that are this species, per 3-degree cell and month, interpolated to weeks"
+ },
+ "western-tanager": {
+  "source": "GBIF.org occurrence search (includes the eBird Observation Dataset, CC BY 4.0)",
+  "taxonKey": 2488484,
+  "records_in_region": 1294456,
+  "all_bird_records_in_region": 1237004903,
+  "cell_degrees": 5.0,
+  "years": "2010,2024",
+  "min_effort_per_cell_month": 100.0,
+  "queried": "2026-10-28",
+  "method": "share of all bird records that are this species, per 3-degree cell and month, interpolated to weeks"
+ },
+ "white-throated-sparrow": {
+  "source": "GBIF.org occurrence search (includes the eBird Observation Dataset, CC BY 4.0)",
+  "taxonKey": 5231140,
+  "records_in_region": 8775718,
+  "all_bird_records_in_region": 1201077178,
+  "cell_degrees": 5.0,
+  "years": "2010,2024",
+  "min_effort_per_cell_month": 100.0,
+  "queried": "2026-10-28",
+  "method": "share of all bird records that are this species, per 3-degree cell and month, interpolated to weeks"
+ },
+ "broad-winged-hawk": {
+  "source": "GBIF.org occurrence search (includes the eBird Observation Dataset, CC BY 4.0)",
+  "taxonKey": 2480538,
+  "records_in_region": 1027170,
+  "all_bird_records_in_region": 1079935324,
+  "cell_degrees": 5.0,
+  "years": "2010,2024",
+  "min_effort_per_cell_month": 100.0,
+  "queried": "2026-10-28",
+  "method": "share of all bird records that are this species, per 3-degree cell and month, interpolated to weeks"
+ },
+ "eastern-kingbird": {
+  "source": "GBIF.org occurrence search (includes the eBird Observation Dataset, CC BY 4.0)",
+  "taxonKey": 5229688,
+  "records_in_region": 3766255,
+  "all_bird_records_in_region": 1306437104,
+  "cell_degrees": 5.0,
+  "years": "2010,2024",
+  "min_effort_per_cell_month": 100.0,
+  "queried": "2026-10-28",
+  "method": "share of all bird records that are this species, per 3-degree cell and month, interpolated to weeks"
+ },
+ "blackpoll-warbler": {
+  "source": "GBIF.org occurrence search (includes the eBird Observation Dataset, CC BY 4.0)",
+  "taxonKey": 6092935,
+  "records_in_region": 946168,
+  "all_bird_records_in_region": 1317556685,
+  "cell_degrees": 5.0,
+  "years": "2010,2024",
+  "min_effort_per_cell_month": 100.0,
+  "queried": "2026-10-28",
+  "method": "share of all bird records that are this species, per 3-degree cell and month, interpolated to weeks"
+ },
+ "rufous-hummingbird": {
+  "source": "GBIF.org occurrence search (includes the eBird Observation Dataset, CC BY 4.0)",
+  "taxonKey": 2476855,
+  "records_in_region": 863479,
+  "all_bird_records_in_region": 1228915975,
+  "cell_degrees": 5.0,
+  "years": "2010,2024",
+  "min_effort_per_cell_month": 100.0,
+  "queried": "2026-10-28",
+  "method": "share of all bird records that are this species, per 3-degree cell and month, interpolated to weeks"
+ },
+ "_citation": "GBIF.org (2026-10-28) GBIF Occurrence Search API. Records of human observations 2010,2024; includes the eBird Observation Dataset (Cornell Lab of Ornithology). For a formal citation, make a GBIF download to obtain a DOI."
+}

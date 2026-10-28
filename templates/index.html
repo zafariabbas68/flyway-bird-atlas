@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flyway: where do the birds go?</title>
+  <meta name="description" content="An animated atlas of seven migratory birds crossing the Americas, one week at a time. Modelled data, original code.">
+  <meta name="theme-color" content="#04070d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <a class="skip" href="#story">Skip to the story</a>
+
+  <header class="masthead" id="masthead">
+    <a class="wordmark" href="#top" aria-label="Flyway, back to the top">Flyway</a>
+    <nav class="rail" aria-label="Chapters" id="rail"></nav>
+  </header>
+
+  <main id="top">
+    <!-- Opening: satellite-style view, clouds, one hawk -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+      <canvas id="sat" role="img" aria-label="Animated satellite-style view of North and Central America with drifting clouds. A green line traces a simulated hawk flying from Pennsylvania toward Peru."></canvas>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <h1 id="hero-title">Where do the birds go?</h1>
+        <p class="lede">Seven migrants. One hemisphere. Fifty-two weeks. Follow the glow as whole populations leave, cross the water and come home.</p>
+      </div>
+      <div class="caption" aria-live="off">
+        <p class="pre">The fall migration of a simulated</p>
+        <p class="who" id="tr-name">Broad-winged Hawk</p>
+        <p class="when" id="tr-time">Sep 10, 2025</p>
+        <p class="badge" id="hero-badge"></p>
+        <p class="meta"><span id="tr-km">0 km flown</span><span id="tr-state">resting</span></p>
+      </div>
+      <a class="chev" href="#greenwave" aria-label="Scroll to the next section">
+        <svg width="34" height="18" viewBox="0 0 34 18" aria-hidden="true"><path d="M2 2l15 14L32 2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </section>
+
+    <section class="greenwave" id="greenwave" aria-labelledby="gw-title">
+      <div class="gw-copy">
+        <h2 id="gw-title">Birds ride the green wave</h2>
+        <p>Every spring the leaves open from the tropics northward, and a flush of insects follows. Migrants move north at about the pace spring does, then slip south as the green fades.</p>
+        <p class="small" id="gw-note">This map is a modelled seasonal cycle of vegetation, not a satellite measurement. Watch the green climb the continent from March to July and drain away by November.</p>
+      </div>
+      <div class="gw-map">
+        <canvas id="gw-canvas" role="img" aria-label="Animated map of modelled vegetation across the Americas, cycling through the months of the year"></canvas>
+        <p class="badge" id="gw-badge"></p>
+        <div class="gw-month" id="gw-month" aria-hidden="true">July</div>
+        <div class="gw-legend"><span>Least<br>vegetation</span><i id="gw-ramp"></i><span>Most<br>vegetation</span></div>
+        <button class="gw-hint" id="gw-hint" type="button">Click map to pause</button>
+      </div>
+    </section>
+
+    <div id="story">
+      <!-- Overview chapter and the seven species chapters are built by main.js -->
+      <section class="chapter overview" id="overview" aria-label="All seven species"></section>
+      <div id="chapters"></div>
+    </div>
+
+    <section class="compare" id="compare" aria-labelledby="compare-title">
+      <div class="wrap">
+        <h2 id="compare-title">Seven strategies, side by side</h2>
+        <p class="measure">The same model produced every glow you just saw. These panels read the numbers back out of it, so you can compare how far, how fast and how synchronised each species is.</p>
+
+        <h3>How far, how long, how fast</h3>
+        <p class="measure small">Spring route length along each bird's modelled path, then the median trip duration and pace.</p>
+        <div id="ledger" class="ledger"></div>
+
+        <h3>Where on Earth is the population?</h3>
+        <p class="measure small">Each panel shows latitude (up) across the year (left to right). Brighter means a larger share of the species is in that 2 degree band. The line follows the population's average latitude.</p>
+        <div id="hovmoller" class="hov-grid"></div>
+
+        <h3>How much of each population is on the move</h3>
+        <p class="measure small">Tall, narrow peaks are synchronised species. Low, wide ones travel in a slow smear. Hover to read a week.</p>
+        <div id="transit" class="transit"></div>
+      </div>
+    </section>
+
+    <section class="method" id="method" aria-labelledby="method-title">
+      <div class="wrap two-col">
+        <div>
+          <h2 id="method-title">How this was made</h2>
+          <p>Each bird in the model is one of 6,000 simulated individuals per species. They get a winter home, a breeding home, personal departure dates, stopovers and a corridor to follow. Every week their positions are binned onto a map grid and blurred, then all 52 weeks are scaled together so brightness means the same thing in January and in June.</p>
+          <p>The browser then does the cartography: it inverts an azimuthal equidistant projection for every pixel, blends two neighbouring weeks, paints the result through a colour ramp and stacks hand-placed labels on top.</p>
+        </div>
+        <div>
+          <h2>What is real, what is not</h2>
+          <p id="method-obs" hidden></p>
+          <p><strong id="method-kind">Modelled, not measured.</strong> Ranges, routes, dates and the hawk's track are illustrative and written from general knowledge of each species. They are not eBird Status and Trends data and not real GPS tags.</p>
+          <p>The coastlines are a simplified built-in set. See the README for swapping in real abundance rasters and Natural Earth boundaries.</p>
+          <p class="small">Format inspired by the animated abundance maps published by the Cornell Lab of Ornithology and the 2018 National Geographic feature on bird migration. No text, images or data from either are used here.</p>
+        </div>
+      </div>
+      <footer class="foot wrap">
+        <span id="foot-source"></span>
+        <span>Built with Flask, NumPy and D3.</span>
+      </footer>
+    </section>
+  </main>
+
+  <noscript><p class="noscript">This atlas draws animated maps with JavaScript. Please enable it to continue.</p></noscript>
+  <script src="{{ url_for('static', filename='vendor/d3.min.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

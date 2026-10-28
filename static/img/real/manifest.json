@@ -1,0 +1,296 @@
+{
+ "goes": {
+  "layer": "GOES-East_ABI_GeoColor",
+  "bbox": [
+   -130.0,
+   -10.0,
+   -40.0,
+   48.0
+  ],
+  "size": [
+   1500,
+   967
+  ],
+  "frames": [
+   {
+    "t": "2026-10-08T00:00:00Z",
+    "file": "goes/frame_000.jpg"
+   },
+   {
+    "t": "2026-10-08T02:00:00Z",
+    "file": "goes/frame_001.jpg"
+   },
+   {
+    "t": "2026-10-08T04:00:00Z",
+    "file": "goes/frame_002.jpg"
+   },
+   {
+    "t": "2026-10-08T06:00:00Z",
+    "file": "goes/frame_003.jpg"
+   },
+   {
+    "t": "2026-10-08T08:00:00Z",
+    "file": "goes/frame_004.jpg"
+   },
+   {
+    "t": "2026-10-08T10:00:00Z",
+    "file": "goes/frame_005.jpg"
+   },
+   {
+    "t": "2026-10-08T12:00:00Z",
+    "file": "goes/frame_006.jpg"
+   },
+   {
+    "t": "2026-10-08T14:00:00Z",
+    "file": "goes/frame_007.jpg"
+   },
+   {
+    "t": "2026-10-08T16:00:00Z",
+    "file": "goes/frame_008.jpg"
+   },
+   {
+    "t": "2026-10-08T18:00:00Z",
+    "file": "goes/frame_009.jpg"
+   },
+   {
+    "t": "2026-10-08T20:00:00Z",
+    "file": "goes/frame_010.jpg"
+   },
+   {
+    "t": "2026-10-08T22:00:00Z",
+    "file": "goes/frame_011.jpg"
+   },
+   {
+    "t": "2026-10-09T00:00:00Z",
+    "file": "goes/frame_012.jpg"
+   },
+   {
+    "t": "2026-10-09T02:00:00Z",
+    "file": "goes/frame_013.jpg"
+   },
+   {
+    "t": "2026-10-09T04:00:00Z",
+    "file": "goes/frame_014.jpg"
+   },
+   {
+    "t": "2026-10-09T06:00:00Z",
+    "file": "goes/frame_015.jpg"
+   },
+   {
+    "t": "2026-10-09T08:00:00Z",
+    "file": "goes/frame_016.jpg"
+   },
+   {
+    "t": "2026-10-09T10:00:00Z",
+    "file": "goes/frame_017.jpg"
+   },
+   {
+    "t": "2026-10-09T12:00:00Z",
+    "file": "goes/frame_018.jpg"
+   },
+   {
+    "t": "2026-10-09T14:00:00Z",
+    "file": "goes/frame_019.jpg"
+   },
+   {
+    "t": "2026-10-09T16:00:00Z",
+    "file": "goes/frame_020.jpg"
+   },
+   {
+    "t": "2026-10-09T18:00:00Z",
+    "file": "goes/frame_021.jpg"
+   },
+   {
+    "t": "2026-10-09T20:00:00Z",
+    "file": "goes/frame_022.jpg"
+   },
+   {
+    "t": "2026-10-09T22:00:00Z",
+    "file": "goes/frame_023.jpg"
+   },
+   {
+    "t": "2026-10-10T00:00:00Z",
+    "file": "goes/frame_024.jpg"
+   },
+   {
+    "t": "2026-10-10T02:00:00Z",
+    "file": "goes/frame_025.jpg"
+   },
+   {
+    "t": "2026-10-10T04:00:00Z",
+    "file": "goes/frame_026.jpg"
+   },
+   {
+    "t": "2026-10-10T06:00:00Z",
+    "file": "goes/frame_027.jpg"
+   },
+   {
+    "t": "2026-10-10T08:00:00Z",
+    "file": "goes/frame_028.jpg"
+   },
+   {
+    "t": "2026-10-10T10:00:00Z",
+    "file": "goes/frame_029.jpg"
+   },
+   {
+    "t": "2026-10-10T12:00:00Z",
+    "file": "goes/frame_030.jpg"
+   },
+   {
+    "t": "2026-10-10T14:00:00Z",
+    "file": "goes/frame_031.jpg"
+   },
+   {
+    "t": "2026-10-10T16:00:00Z",
+    "file": "goes/frame_032.jpg"
+   },
+   {
+    "t": "2026-10-10T18:00:00Z",
+    "file": "goes/frame_033.jpg"
+   },
+   {
+    "t": "2026-10-10T20:00:00Z",
+    "file": "goes/frame_034.jpg"
+   },
+   {
+    "t": "2026-10-10T22:00:00Z",
+    "file": "goes/frame_035.jpg"
+   },
+   {
+    "t": "2026-10-11T00:00:00Z",
+    "file": "goes/frame_036.jpg"
+   },
+   {
+    "t": "2026-10-11T02:00:00Z",
+    "file": "goes/frame_037.jpg"
+   },
+   {
+    "t": "2026-10-11T04:00:00Z",
+    "file": "goes/frame_038.jpg"
+   },
+   {
+    "t": "2026-10-11T06:00:00Z",
+    "file": "goes/frame_039.jpg"
+   },
+   {
+    "t": "2026-10-11T08:00:00Z",
+    "file": "goes/frame_040.jpg"
+   },
+   {
+    "t": "2026-10-11T10:00:00Z",
+    "file": "goes/frame_041.jpg"
+   },
+   {
+    "t": "2026-10-11T12:00:00Z",
+    "file": "goes/frame_042.jpg"
+   },
+   {
+    "t": "2026-10-11T14:00:00Z",
+    "file": "goes/frame_043.jpg"
+   },
+   {
+    "t": "2026-10-11T16:00:00Z",
+    "file": "goes/frame_044.jpg"
+   },
+   {
+    "t": "2026-10-11T18:00:00Z",
+    "file": "goes/frame_045.jpg"
+   },
+   {
+    "t": "2026-10-11T20:00:00Z",
+    "file": "goes/frame_046.jpg"
+   },
+   {
+    "t": "2026-10-11T22:00:00Z",
+    "file": "goes/frame_047.jpg"
+   },
+   {
+    "t": "2026-10-12T00:00:00Z",
+    "file": "goes/frame_048.jpg"
+   }
+  ],
+  "step_hours": 2,
+  "track_aligned": false,
+  "attribution": "We acknowledge the use of imagery provided by services from NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS)."
+ },
+ "updated": "2026-10-28",
+ "bluemarble": {
+  "layer": "BlueMarble_NextGeneration",
+  "bbox": [
+   -170.0,
+   -30.0,
+   -40.0,
+   72.0
+  ],
+  "size": [
+   1083,
+   850
+  ],
+  "files": [
+   "bluemarble/static.jpg"
+  ],
+  "months": [
+   0
+  ],
+  "times": [
+   null
+  ],
+  "attribution": "We acknowledge the use of imagery provided by services from NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS)."
+ },
+ "ndvi": {
+  "layer": "MODIS_Terra_NDVI_8Day",
+  "bbox": [
+   -170.0,
+   -30.0,
+   -40.0,
+   72.0
+  ],
+  "size": [
+   1083,
+   850
+  ],
+  "files": [
+   "ndvi/month_01.png",
+   "ndvi/month_02.png",
+   "ndvi/month_03.png",
+   "ndvi/month_04.png",
+   "ndvi/month_05.png",
+   "ndvi/month_06.png",
+   "ndvi/month_07.png",
+   "ndvi/month_08.png",
+   "ndvi/month_09.png",
+   "ndvi/month_10.png",
+   "ndvi/month_11.png",
+   "ndvi/month_12.png"
+  ],
+  "months": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "times": [
+   "2026-01-15",
+   "2026-02-15",
+   "2026-03-15",
+   "2026-04-15",
+   "2026-05-15",
+   "2026-06-15",
+   "2026-07-15",
+   "2026-08-15",
+   "2026-09-15",
+   "2026-10-15",
+   "2025-11-15",
+   "2025-12-15"
+  ],
+  "attribution": "We acknowledge the use of imagery provided by services from NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS)."
+ }
+}
