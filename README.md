@@ -1,106 +1,96 @@
+
 # Flyway: an animated bird migration atlas
 
-A scroll-driven, dark-map storytelling page about seven migratory birds crossing the
-Americas, one week at a time. Python (Flask + NumPy) builds the data, the browser
-(Canvas + D3) does the cartography and animation.
+**Live site: https://flyway-bird-atlas.vercel.app**
 
+A scroll-driven storytelling page about seven migratory birds crossing the Americas, one week
+at a time. Python (Flask + NumPy) serves the data; the browser (Canvas + D3) does the
+cartography and animation. The format was inspired by National Geographic's "Billions of
+Birds Migrate" interactive.
 
-> **Important: the data is modelled, not measured.** Ranges, routes, dates and the
-> hawk track are illustrative, written from general knowledge of each species. They are
-> **not** eBird Status and Trends data and **not** real GPS tags. The page says so too.
+## What is real and what is not
 
-## Run it in PyCharm
+| Part of the page | Source | Status |
+| --- | --- | --- |
+| Opening satellite scene | NASA GIBS, GOES-East GeoColor, 49 frames every 2 hours from 8 to 12 Oct 2026 | Real |
+| Green wave | NASA GIBS, MODIS Terra NDVI, 12 monthly images | Real |
+| Chapter map background | NASA GIBS, Blue Marble (one still image, not seasonal) | Real |
+| Coastlines and borders | Natural Earth 1:50m | Real |
+| Bird maps (7 species) | GBIF occurrence records (includes eBird), about 18.7 million, 2010 to 2024 | Real, but see below |
+| Hawk route in the opening scene | Simulated | **Not real** |
 
-1. **File > Open** and choose the `flyway-bird-migration` folder.
-2. **Settings > Project > Python Interpreter > Add Interpreter > Add Local Interpreter >
-   Virtualenv** (a new `.venv` is fine). Python 3.10 or newer.
-3. Open the terminal in PyCharm and run `pip install -r requirements.txt`.
-4. Right-click `run.py` > **Run 'run'** (or pick the **Flyway** run configuration in the
-   top-right dropdown).
-5. Open <http://127.0.0.1:5000>.
+**Bird map brightness is observation frequency, not abundance.** For each 5 degree cell and
+month it is the species' share of all bird records, interpolated to 52 weeks. It corrects for
+where observers are, but it is not eBird Status and Trends abundance. The hawk is a simulated
+route, not a tagged bird; add a Movebank CSV to change that (see `docs/DATA_SOURCES.md`).
 
-The first start builds seven yearly grids in about two seconds and caches them in
-`flyway/cache/`. D3 is bundled in `static/vendor/`, so the only thing that needs internet
-is the Google Fonts stylesheet (the page falls back to system fonts without it).
+Every panel carries a badge saying "Real" or "Modelled". Without the downloaded data the
+project runs offline on a fully modelled dataset (`FLYWAY_DATA=simulated` forces this).
 
-From any terminal: `python run.py`. Tests: `pytest`.
+## Run it locally (PyCharm or any terminal)
 
-## What you will see
+1. Open the project folder, create a virtual environment (Python 3.10 or newer).
+2. `pip install -r requirements-dev.txt`
+3. `python run.py`, then open <http://127.0.0.1:5000>.
+4. Tests: `pytest` (18 tests, all offline).
 
-| Section | What it does |
-| --- | --- |
-| Satellite-style opening | A full-bleed view of the Americas with drifting clouds, soft cloud shadows and a day/night edge. A green line traces a simulated Broad-winged Hawk from Pennsylvania to Peru, with a live date, local time and distance. |
-| Green wave | A month-by-month animated vegetation map (least to most vegetation). Click the map to pause. |
-| Overview map | All seven species glow together. Scroll to jump to January, April, July and September. Toggle species with the chips. Drag the timeline to scrub. |
-| Seven chapters | One sticky map per species. Scroll cards move the map to a week; leader lines and labels fade in for each step. The sparkline shows how much of the population is in transit. |
-| Compare | Route length ledger, latitude-by-week panels with hover read-out, and an in-transit chart for all species. |
+## Download real data (needs internet, run once)
+
+    python scripts/fetch_real_data.py check
+    python scripts/fetch_real_data.py coast
+    python scripts/fetch_real_data.py imagery
+    python scripts/fetch_real_data.py goes
+    python scripts/fetch_real_data.py observations --quick    # drop --quick for 3 degree cells (20 to 60 min)
+
+If GBIF answers "429 Too Many Requests", wait a few minutes and add `--workers 2`.
+Restart the server and hard-refresh afterwards. Details and licences: `docs/DATA_SOURCES.md`.
+
+## Deploy on Vercel
+
+The site is deployed from this repository. `app.py` exposes the Flask `app`. Vercel cannot write
+files at run time, so the cache is built ahead of time and committed:
+
+    python scripts/rebuild_cache.py
+    rm -rf public && mkdir public && cp -R static public/static
+    git add . && git commit -m "Update" && git push
+
+Vercel redeploys on every push to `main`.
 
 ## Project layout
 
 ```
-run.py                     start the server
+app.py                     Vercel entry point
+run.py                     local development server
 flyway/
-  species_data.py          the 7 species: ranges, routes, timing, story steps (edit here)
-  simulate.py              agent-based model -> 52 weekly grids + analysis metrics
-  geo.py                   haversine / polyline helpers
-  tracks.py                simulated hawk track for the globe
-  basemap_builtin.py       built-in simplified coastlines
-  basemap.py               loads Natural Earth if present
+  species_data.py          the 7 species: ranges, routes, timing, story steps
+  simulate.py              agent-based model -> 52 weekly grids (offline fallback)
+  observed.py              GBIF counts -> weekly observation-frequency maps
+  store.py                 chooses real or modelled data per species
   routes.py                page + JSON/binary API
+  tracks.py                simulated hawk track, Movebank CSV loader
+  basemap.py, basemap_builtin.py, geo.py
+  sources/                 http, gibs (NASA), gbif, pipeline (download steps)
 templates/index.html       page shell
-static/css/main.css        design system
-static/js/                 main, chapter, mapengine, timeline, hero, greenwave, satellite, analysis, basemap, api, util
-static/vendor/d3.min.js    D3 7.9.0 (ISC licence)
-scripts/                   rebuild_cache.py, fetch_natural_earth.py
-tests/                     model and API tests
-docs/ANALYSIS.md           analysis of the reference piece and how this project maps to it
+static/css, static/js      design, hero, greenwave, chapters, map engine, imagery, analysis
+static/img/real/           downloaded NASA imagery
+flyway/cache/real/         downloaded bird data, converted
+scripts/                   fetch_real_data.py, rebuild_cache.py
+tests/                     model, API and offline pipeline tests
+docs/                      ANALYSIS.md, DATA_SOURCES.md
 ```
 
 ## API
 
 `/api/meta`, `/api/species`, `/api/species/<id>`, `/api/species/<id>/frames.bin`
 (52 x 136 x 173 uint8), `/api/species/<id>/analysis`, `/api/compare`, `/api/basemap`,
-`/api/track/hawk`, `/healthz`.
+`/api/imagery`, `/api/track/hawk`, `/healthz`.
 
-## About the satellite look
+## Credits
 
-There are no photographs in this project and no network calls for imagery. `static/js/satellite.js`
-**synthesises** the picture in the browser: fractal coastlines, vegetation that follows the
-seasons, hand-placed wet and dry regions, mountain ranges with hill-shading, snow and ice, a
-shallow-sea tint and tileable moving clouds. It looks like Earth-observation imagery but it is
-procedural, so treat it as illustration.
-
-To use real imagery instead (for example NASA Blue Marble monthly composites, public domain),
-download the images yourself and draw them in `Hero.draw()` and `MapEngine` in place of
-`SatelliteTexture`. The projection maths is already there.
-
-## Customising
-
-* **Add or change a species** in `flyway/species_data.py`; the grids rebuild automatically
-  when the definition changes (a fingerprint is stored with each cache file).
-* **Sharper coastlines:** `python scripts/fetch_natural_earth.py` (needs internet),
-  restart. This script was not run in the build environment, which had no internet.
-* **Use real abundance data:** replace `simulate_species` so it returns a
-  `(52, HEIGHT, WIDTH)` uint8 array resampled from your own rasters (for example eBird
-  Status and Trends weekly abundance, subject to its licence and attribution terms).
-  Nothing else in the project changes.
-* **Speed** of the loop: `LOOP_SPEED` in `static/js/chapter.js`.
-* **Colours / look:** CSS variables at the top of `static/css/main.css`; each species'
-  colour is in `species_data.py`.
-
-## Credits and originality
-
-The format was inspired by the animated abundance maps from the Cornell Lab of Ornithology
-and the 2018 National Geographic feature "Billions of Birds Migrate". No text, images,
-data or code from those works are used. All copy, code and data here are original.
-
-
-## Real data (optional)
-The project runs offline with modelled data. To use real NASA satellite imagery and real GBIF/eBird bird
-records, run on your own computer (needs internet):
-
-    python scripts/fetch_real_data.py check
-    python scripts/fetch_real_data.py all --quick      # quick = coarser bird grid, a few minutes
-    python run.py
-
-See `docs/DATA_SOURCES.md`. Tests: `pytest` (17 tests, all offline).
+* Imagery: we acknowledge the use of imagery provided by services from NASA's Global Imagery
+  Browse Services (GIBS), part of NASA's Earth Science Data and Information System (ESDIS).
+* Bird records: GBIF.org, including the eBird Observation Dataset (Cornell Lab of
+  Ornithology), CC BY 4.0. For a formal citation, make a GBIF download to obtain a DOI.
+* Coastlines: Natural Earth (public domain). D3 7.9.0 (ISC licence).
+* Inspired by the animated abundance maps of the Cornell Lab of Ornithology and the 2018
+  National Geographic feature. No text, images, data or code from those works are used.
