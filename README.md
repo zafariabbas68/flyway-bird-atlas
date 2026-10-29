@@ -104,3 +104,10 @@ records, run on your own computer (needs internet):
     python run.py
 
 See `docs/DATA_SOURCES.md`. Tests: `pytest` (17 tests, all offline).
+
+## Validation
+`python scripts/validate_observations.py --quick` builds each species' map from two independent
+sets of years (2010-2016 and 2017-2024). Seasonal-change correlation between the halves is 0.94 to
+0.98 for all seven species (see `docs/VALIDATION.md`). This shows the maps are reproducible, not
+that they are accurate: accuracy still needs an independent reference such as eBird Status and
+Trends (`docs/REFERENCES.md`).
