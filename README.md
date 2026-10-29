@@ -97,37 +97,6 @@ To use real imagery instead (for example NASA Blue Marble monthly composites, pu
 download the images yourself and draw them in `Hero.draw()` and `MapEngine` in place of
 `SatelliteTexture`. The projection maths is already there.
 
-## Customising
-
-* **Add or change a species** in `flyway/species_data.py`; the grids rebuild automatically
-  when the definition changes (a fingerprint is stored with each cache file).
-* **Sharper coastlines:** `python scripts/fetch_natural_earth.py` (needs internet),
-  restart. This script was not run in the build environment, which had no internet.
-* **Use real abundance data:** replace `simulate_species` so it returns a
-  `(52, HEIGHT, WIDTH)` uint8 array resampled from your own rasters (for example eBird
-  Status and Trends weekly abundance, subject to its licence and attribution terms).
-  Nothing else in the project changes.
-* **Speed** of the loop: `LOOP_SPEED` in `static/js/chapter.js`.
-* **Colours / look:** CSS variables at the top of `static/css/main.css`; each species'
-  colour is in `species_data.py`.
-
-## Credits and originality
-
-The format was inspired by the animated abundance maps from the Cornell Lab of Ornithology
-and the 2018 National Geographic feature "Billions of Birds Migrate". No text, images,
-data or code from those works are used. All copy, code and data here are original.
-
-
-## Real data (optional)
-The project runs offline with modelled data. To use real NASA satellite imagery and real GBIF/eBird bird
-records, run on your own computer (needs internet):
-
-    python scripts/fetch_real_data.py check
-    python scripts/fetch_real_data.py all --quick      # quick = coarser bird grid, a few minutes
-    python run.py
-
-See `docs/DATA_SOURCES.md`. Tests: `pytest` (17 tests, all offline).
-
 ## Validation
 `python scripts/validate_observations.py --quick` builds each species' map from two independent
 sets of years (2010-2016 and 2017-2024). Seasonal-change correlation between the halves is 0.94 to
