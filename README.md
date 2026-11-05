@@ -29,7 +29,7 @@ project runs offline on a fully modelled dataset (`FLYWAY_DATA=simulated` forces
 
 ## Run it locally (PyCharm or any terminal)
 
-1. Open the project folder, create a virtual environment (Python 3.10 or newer).
+1.  Create a virtual environment (Python 3.10 or newer).
 2. `pip install -r requirements-dev.txt`
 3. `python run.py`, then open <http://127.0.0.1:5000>.
 4. Tests: `pytest` (18 tests, all offline).
