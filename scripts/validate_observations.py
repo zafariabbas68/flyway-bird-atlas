@@ -1,13 +1,4 @@
-"""Stability check for the observed bird maps (split-half reliability).
 
-Builds each species' weekly map twice, from two independent sets of years, and compares them:
-    python scripts/validate_observations.py --quick                  # all species, 5-degree cells
-    python scripts/validate_observations.py --species wood-thrush
-
-What this shows: whether the pattern depends on WHICH years of records were used. A high
-correlation means the maps are reproducible. It does NOT show they are accurate; that needs an
-independent reference (eBird Status and Trends, published ranges, GPS tracks). Writes docs/VALIDATION.md.
-"""
 from __future__ import annotations
 
 import argparse
