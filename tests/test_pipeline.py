@@ -1,4 +1,4 @@
-"""Offline tests of the real-data pipeline: every network call is replaced by a mock."""
+
 import io, json
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
