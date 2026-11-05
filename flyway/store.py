@@ -1,9 +1,4 @@
-"""Chooses between real (observed) data and the simulation, species by species.
 
-FLYWAY_DATA=auto       (default) use real data where it has been downloaded, else simulate
-FLYWAY_DATA=simulated  always simulate
-FLYWAY_DATA=real       use real data where available (same as auto, but logged)
-"""
 from __future__ import annotations
 
 import json
