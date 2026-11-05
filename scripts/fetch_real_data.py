@@ -1,4 +1,4 @@
-"""Download REAL data for Flyway. Run this on your own computer (it needs internet).
+
 
     python scripts/fetch_real_data.py check            # which services can I reach?
     python scripts/fetch_real_data.py coast            # Natural Earth coastlines (public domain)
