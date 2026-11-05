@@ -1,9 +1,4 @@
-"""Illustrative GPS-style track for the opening globe (a Broad-winged Hawk).
 
-This is *simulated*, not a tagged bird. It follows the well-known Atlantic /
-Gulf / Central American soaring route and only advances during daylight, which
-reproduces the stop-start staircase look of real soaring-bird tracks.
-"""
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
